@@ -35,35 +35,45 @@ The root url for all endpoints is http://localhost:5000
 
 
 - POST `/user`
-
 ```
 Body : { username | String , password | String }
 ```
+This endpoint is for registering a new user.
+
 
 - POST `/login`
-
 ```
 Body : { username | String , password | String }
 ```
+This endpoint returns a jsonwebtoken on successful login.
+Imp Note ! This token must be present in Auth header of all subsequent requests.
+
 
 - GET `/all`
 ```
 Headers : { Authorization : Bearer <token> }
 ```
+Returns all task items for currently logged-in user.
+
 
 - POST `/create`
 ```
 Body : { name | String , description | String , deadline | String }
 Headers : { Content-Type : application/json , Authorization : Bearer <token> }
 ```
+Create a new task. All feilds are required.
+
 
 - PUT `/update/<id>`
 ```
 Body : { name | String , description | String , deadline | String }
 Headers : { Content-Type : application/json , Authorization : Bearer <token> }
 ```
+Partially update an existing task for the current user based on id (passed in url). All feilds (in body) are optional and any combination of them may be present.
+
 
 - DELETE `/delete/<id>`
 ```
 Headers : { Authorization : Bearer <token> }
 ```
+Delete any task of the current user based on id (passed in url)
