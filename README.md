@@ -25,3 +25,45 @@ JWT_SECRET="my_secret";
 the string *"my_secret"* is used to encode the JWT data and decoding it during user authentication, it can be replaced by any string.
 
 The program is run using the command: `cargo run` or `cargo run --release`
+
+
+## API Endpoints
+
+The application runs on port 5000 by default.
+
+The root url for all endpoints is http://localhost:5000
+
+
+- POST `/user`
+
+```
+Body : { username | String , password | String }
+```
+
+- POST `/login`
+
+```
+Body : { username | String , password | String }
+```
+
+- GET `/all`
+```
+Headers : { Authorization : Bearer <token> }
+```
+
+- POST `/create`
+```
+Body : { name | String , description | String , deadline | String }
+Headers : { Content-Type : application/json , Authorization : Bearer <token> }
+```
+
+- PUT `/update/<id>`
+```
+Body : { name | String , description | String , deadline | String }
+Headers : { Content-Type : application/json , Authorization : Bearer <token> }
+```
+
+- DELETE `/delete/<id>`
+```
+Headers : { Authorization : Bearer <token> }
+```
