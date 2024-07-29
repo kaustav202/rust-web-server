@@ -77,3 +77,50 @@ Partially update an existing task for the current user based on id (passed in ur
 Headers : { Authorization : Bearer <token> }
 ```
 Delete any task of the current user based on id (passed in url)
+
+
+## TEST
+
+1. register a user
+```
+curl -X POST 'localhost:5000/user' -H "Content-Type: application/json" -d '{"username": "testuser", "password": "testpass" }'
+```
+
+</br>
+
+2. login and recieve auth token
+```
+curl -X POST 'localhost:5000/login' -H "Content-Type: application/json" -d '{"username": "testuser", "password": "testpass"}'
+```
+
+</br>
+
+3. Get all tasks for logged-in user
+```
+curl -X GET 'localhost:5000/all' -H 'Authorization: Bearer <token>'
+```
+replace <token>
+
+</br>
+
+4. Create a new task
+```
+curl -X POST 'localhost:5000/create' -H "Content-Type: application/json" -H 'Authorization: Bearer <token>'  -d '{"name": "task 1",  "description": "description for task 1", "deadline": "07-10-2024"}'
+```
+replace <token>
+
+</br>
+
+5. Update a task
+```
+curl -X PUT 'localhost:5000/update/<id>' -H "Content-Type: application/json" -H 'Authorization: Bearer <token>'  -d '{"name": "updated task 1", "deadline": "07-10-2026"}'
+```
+replace <id> and <token>
+
+</br>
+
+6. Delete a task
+```
+curl -X DELETE 'localhost:5000/delete/<id>' -H "Content-Type: application/json" -H 'Authorization: Bearer <token>'
+```
+replace <id> and <token>
