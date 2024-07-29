@@ -16,7 +16,7 @@ An `HashMap` is used as an in memory database.
 
 ## Run Locally
 
-A .env file needs to be present in the root of the project ( not in this repo ) with a line
+A **.env** file needs to be added in the root of the project ( not in this repo ) with a line
 
 ```
 JWT_SECRET="my_secret";
@@ -31,7 +31,7 @@ The program is run using the command: `cargo run` or `cargo run --release`
 
 The application runs on port 5000 by default.
 
-The root url for all endpoints is http://localhost:5000
+The root url for all endpoints is ```http://localhost:5000```
 
 
 - POST `/user`
@@ -81,46 +81,46 @@ Delete any task of the current user based on id (passed in url)
 
 ## TEST
 
-1. register a user
+**1. register a new user**
 ```
 curl -X POST 'localhost:5000/user' -H "Content-Type: application/json" -d '{"username": "testuser", "password": "testpass" }'
 ```
 
 </br>
 
-2. login and recieve auth token
+**2. login and recieve auth token**
 ```
 curl -X POST 'localhost:5000/login' -H "Content-Type: application/json" -d '{"username": "testuser", "password": "testpass"}'
 ```
 
 </br>
 
-3. Get all tasks for logged-in user
+**3. Get all tasks for a user**
 ```
 curl -X GET 'localhost:5000/all' -H 'Authorization: Bearer <token>'
 ```
-replace <token>
+replace ```<token>``` with the auth token received in login
 
 </br>
 
-4. Create a new task
+**4. Create a new task**
 ```
 curl -X POST 'localhost:5000/create' -H "Content-Type: application/json" -H 'Authorization: Bearer <token>'  -d '{"name": "task 1",  "description": "description for task 1", "deadline": "07-10-2024"}'
 ```
-replace <token>
+replace ```<token>```
 
 </br>
 
-5. Update a task
+**5. Update a task by its id**
 ```
 curl -X PUT 'localhost:5000/update/<id>' -H "Content-Type: application/json" -H 'Authorization: Bearer <token>'  -d '{"name": "updated task 1", "deadline": "07-10-2026"}'
 ```
-replace <id> and <token>
+replace ```<id>``` and ```<token>```
 
 </br>
 
-6. Delete a task
+**6. Delete a task by its id**
 ```
 curl -X DELETE 'localhost:5000/delete/<id>' -H "Content-Type: application/json" -H 'Authorization: Bearer <token>'
 ```
-replace <id> and <token>
+replace ``<id>`` and ``<token>``
