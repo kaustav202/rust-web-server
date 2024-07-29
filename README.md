@@ -124,3 +124,15 @@ replace ```<id>``` and ```<token>```
 curl -X DELETE 'localhost:5000/delete/<id>' -H "Content-Type: application/json" -H 'Authorization: Bearer <token>'
 ```
 replace ``<id>`` and ``<token>``
+
+
+## Running as Docker Container
+
+- Build the docker image using the Dockerfile in the repo
+```
+docker build -t rust-server:latest .
+```
+- Deploy the docker container
+```
+docker run -p 5000:5000 rust-server
+```
